@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Open+Sans:wght@300&family=Roboto:wght@300&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  justify-content: center;
+  background-color: cadetblue;
+}
+fieldset {
+  margin-top: 10px;
+  background-color: rgb(189, 189, 200);
+}
+fieldset > legend {
+  text-align: center;
+  padding: 4px;
+  font-weight: bold;
+  font-size: large;
+  letter-spacing: 1px;
+}
+#contact {
+  padding: 10px;
+  width: fit-content;
+  height: fit-content;
+  display: grid;
+  grid-template-areas:
+    'personal-info'
+    'message'
+    'sb';
+}
+#contact > .personal-info {
+  grid-area: personal-info;
+}
+#contact > .message {
+  grid-area: message;
+  margin-top: 10px;
+}
+#contact > .submit {
+  grid-area: sb;
+}
+.input-width {
+  width: 250px;
+  height: 20px;
+}
+button {
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table td {
+  padding: 2px 2px;
+}
