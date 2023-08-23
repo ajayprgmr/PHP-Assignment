@@ -70,10 +70,9 @@ require 'PHPMailer/src/Exception.php';
 require  'PHPMailer/src/PHPMailer.php';
 require  'PHPMailer/src/SMTP.php';
 
-//Create an instance; passing `true` enables exceptions
+
 $mail = new PHPMailer(true);
 try {
- //Server settings
     $mail->SMTPDebug = 0;
     $mail->isSMTP();  
     $mail->Host = 'smtp.gmail.com';  
@@ -94,12 +93,11 @@ try {
     $mail->isHTML(true);
     $mail->Subject = $subject;
     $mail->Body    = $body_mail;
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     $mail->send();
     header("Location:./response.php");
 }
 catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "Something Went Wrong Please try After Sometime. Mailer Error: {$mail->ErrorInfo}";
 }
      }
      else {
