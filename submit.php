@@ -56,6 +56,15 @@ date_default_timezone_set('Asia/Kolkata');
     VALUES
     ('$name','$email', '$phone', '$subject', '$message','$user_ip', '$current_timestamp')";
      if(mysqli_query($conn, $sql)) {
+
+
+      $body_mail = "<p><b>Name:</b> $name</p>";
+      $body_mail .= "<p><b>Email:</b> $email</p>";
+      $body_mail .= "<p><b>Phone: </b>$phone</p>";
+      $body_mail .= "<p><b>Ip Address:</b> $user_ip</p>";
+      $body_mail .= "<p><b>CurrenttimeStamp:</b> $current_timestamp</p>";
+      $body_mail .= "<p><b>Message</b><br>$message</p>";
+    
 // email logic
 require 'PHPMailer/src/Exception.php';
 require  'PHPMailer/src/PHPMailer.php';
@@ -65,7 +74,7 @@ require  'PHPMailer/src/SMTP.php';
 $mail = new PHPMailer(true);
 try {
  //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;  
+    $mail->SMTPDebug = 0;
     $mail->isSMTP();  
     $mail->Host = 'smtp.gmail.com';  
     $mail->SMTPAuth = true;  
@@ -83,8 +92,8 @@ try {
 
    //Content
     $mail->isHTML(true);
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->Subject = $subject;
+    $mail->Body    = $body_mail;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     $mail->send();
     header("Location:./response.php");
